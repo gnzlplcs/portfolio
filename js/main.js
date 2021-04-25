@@ -1,18 +1,10 @@
 const links = [{
-    label: "Week 01: Create a portfolio",
+    label: "Week 01: Create a portfolio / Questions / Coding",
     url: "week01/index.html"
-  },
-  {
-    label: "Week 02",
-    url: "week02/index.html"
-  },
-  {
-    label: "Week 03",
-    url: "week03/index.html"
   }
 ]
 
-const createContent = () => {
+function createContent() {
   let olLinks = document.createElement('ol');
   olLinks.setAttribute('class', 'ol')
   links.forEach(link => {
