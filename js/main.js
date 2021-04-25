@@ -12,7 +12,7 @@ const links = [{
   }
 ]
 
-const createContent = () => {
+function createContent() {
   let olLinks = document.createElement('ol');
   olLinks.setAttribute('class', 'ol')
   links.forEach(link => {
