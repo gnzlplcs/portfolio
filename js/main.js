@@ -1,5 +1,5 @@
 const links = [{
-    label: "Week 01: Create a portfolio / Questions / Coding",
+    label: "Week 01: Create a portfolio / LocalStorage",
     url: "week01/index.html"
   }
 ]
