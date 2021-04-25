@@ -1,25 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-  <title>Story writer</title>
+  <title>Story Editor</title>
   <script>
     function loadStory() {
-      var storyName = document.getElementById('name_input').value;
-      var storyHTML = localStorage.getItem(storyName);
-      document.getElementById('story_editor').value = storyHTML;
-      console.log(storyHTML);
+      var storyName = document.getElementById("name_input").value
+      var storyHTML = localStorage.getItem(storyName)
+      document.getElementById("story_editor").value = storyHTML
     }
 
     function saveStory() {
-      var storyName = document.getElementById('name_input').value;
-      var storyHTML = document.getElementById('story_editor').value;
-      localStorage.setItem(storyName, storyHTML);
+      var storyName = document.getElementById("name_input").value
+      var storyHTML = document.getElementById("story_editor").value
+      localStorage.setItem(storyName, storyHTML)
     }
 
     function displayStory() {
-      var storyHTML = document.getElementById('story_editor').value;
-      document.getElementById('story_display').innerHTML = storyHTML;
+      var storyHTML = document.getElementById("story_editor").value
+      document.getElementById("story_display").innerHTML = storyHTML
     }
   </script>
 
@@ -34,14 +33,13 @@
 
 <body>
   <h1>Story Editor</h1>
-  Story Name:
-  <input type="text" id="name_input">
+  Story Name:<input id=name_input></input>
   <section>
-    <button onclick=""loadStory()>Find and Edit it</button>
-    <button onclick=""saveStory()>Save it</button>
-    <button onclick=""displayStory()>Display it</button>
+    <button onclick="loadStory()">Find and Edit It</button>
+    <button onclick="saveStory()">Save It</button>
+    <button onclick="displayStory()">Display It</button>
   </section>
-  <textarea name="" id="story_editor" cols="30" rows="10" placeholder="Write a totally awesome story here"></textarea>
+  <textarea id="story_editor" placeholder="Write a totally awesome story here."></textarea>
   <section id="story_display"></section>
 </body>
 
