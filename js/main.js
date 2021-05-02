@@ -1,11 +1,11 @@
 // This code adds content to Index Main section
 
 const links = [{
-    label: "Week 01: Weekly Report / LocalStorage",
+    label: "Week 01: LocalStorage",
     url: "week01/index.html"
   },
   {
-    label: "Week 02: Weekly Report / Team Activity",
+    label: "Week 02: Team Activity",
     url: "week02/index.html"
   }
 ]
