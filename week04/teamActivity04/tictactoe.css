@@ -1,0 +1,33 @@
+body {
+  margin: 20px auto;
+  max-width: 600px;
+  min-width: 330px;
+  box-sizing: border-box;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.section__square {
+  width: auto;
+  height: 20vh;
+  border: 2px solid black;
+}
+
+.section__square:nth-child(-n + 3) {
+  border-top: none;
+}
+
+.section__square:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.section__square:nth-last-child(-n + 3) {
+  border-bottom: none;
+}
+
+.section__square:nth-child(3n - 2) {
+  border-left: none;
+}

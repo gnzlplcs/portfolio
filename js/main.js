@@ -11,7 +11,12 @@ const links = [{
   {
     label: "Week 03: Quiz Ninja",
     url: "week03/index.html"
+  },
+  {
+    label: "Week 04: Team Activity",
+    url: "week04/index.html"
   }
+
 ]
 
 function createContent() {
