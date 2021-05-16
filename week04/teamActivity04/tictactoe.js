@@ -4,9 +4,9 @@ let playerTemp = player1;
 const square = document.querySelector('.section');
 
 function playGame(e) {
-  if (e.target.innerHTML == "") {
+  if (e.target.innerHTML === "") {
     e.target.innerHTML = playerTemp;
-    if (playerTemp == player1) {
+    if (playerTemp === player1) {
       playerTemp = player2;
     } else {
       playerTemp = player1;
@@ -17,9 +17,9 @@ function playGame(e) {
 }
 
 function resetGame() {
-  let square = document.querySelector(".section");
-  for (let i = 0; i < square.children.length; i++) {
-    square.children[i].innerHTML = "";
+  let filledSquare = document.querySelector(".section");
+  for (let i = 0; i < filledSquare.children.length; i++) {
+    filledSquare.children[i].innerHTML = "";
   }
   playerTemp = player1;
 }
