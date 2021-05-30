@@ -1,16 +1,4 @@
 let toDoList = [];
-
-function addTodo(content) {
-  const todo = {
-    id: Date.now(),
-    content,
-    completed: false
-  };
-
-  toDoList.push(todo);
-  renderTodo(todo);
-}
-
 function renderTodo(todo) {
   localStorage.setItem('todoLSItem', JSON.stringify(toDoList));
 
@@ -23,16 +11,16 @@ function renderTodo(todo) {
     return
   }
 
-  const isChecked = todo.completed ? 'done': '';
+  const isChecked = todo.completed ? 'done' : '';
   const node = document.createElement("li");
   node.setAttribute('class', `todo-item ${isChecked}`);
   node.setAttribute('data-key', todo.id);
   node.innerHTML = `
-    <input id="${todo.id}" type="checkbox"/>
-    <label for="${todo.id}" class="tick"></label>
-    <span>${todo.content}</span>
-    <button class="delete-todo btn btn-danger d-flex align-items-center">Remove
-    </button>
+  <input id="${todo.id}" type="checkbox"/>
+  <label for="${todo.id}" class="tick"></label>
+  <span>${todo.content}</span>
+  <button class="delete-todo btn btn-danger d-flex align-items-center">Remove
+  </button>
   `;
 
   if (item) {
@@ -40,16 +28,34 @@ function renderTodo(todo) {
   } else {
     list.append(node);
   }
+
+  console.log('renderTodo function invoked')
 }
+
+function addTodo(content) {
+  const todo = {
+    id: Date.now(),
+    content,
+    completed: false
+  };
+
+  toDoList.push(todo);
+  renderTodo(todo);
+  console.log('addTodo function invoked')
+}
+
 
 function toggleDone(key) {
   const index = toDoList.findIndex(item => item.id === Number(key));
   toDoList[index].completed = !toDoList[index].completed;
   renderTodo(toDoList[index]);
+  console.log('toggleTodo function invoked')
+
 }
 
 function deleteTodo(key) {
   const index = toDoList.findIndex(item => item.id === Number(key));
+
   const todo = {
     deleted: true,
     ...toDoList[index]
@@ -57,6 +63,7 @@ function deleteTodo(key) {
 
   toDoList = toDoList.filter(item => item.id !== Number(key));
   renderTodo(todo);
+  console.log('deleteTodo function invoked')
 }
 
 const form = document.querySelector('.form');
@@ -70,6 +77,8 @@ form.addEventListener('submit', event => {
     input.value = '';
     input.focus();
   }
+  console.log('form function invoked')
+
 });
 
 const list = document.querySelector('.todo-list');
@@ -83,6 +92,25 @@ list.addEventListener('click', event => {
     const itemKey = event.target.parentElement.dataset.key;
     deleteTodo(itemKey);
   }
+  console.log('list function invoked')
+});
+
+const active = document.querySelector('.active-todo');
+active.addEventListener('click', () => {
+  const activeTodos = toDoList.filter(item => item.completed === false);
+  activeTodos.forEach(t => {
+    renderTodo(t);
+  });
+  console.log('active function invoked')
+});
+
+const complete = document.querySelector('.completed-todo');
+complete.addEventListener('click', () => {
+  const completeTodos = toDoList.filter(item => item.completed === true);
+  completeTodos.forEach(t => {
+    renderTodo(t);
+  });
+  console.log('complete function invoked')
 });
 
 document.addEventListener('DOMContentLoaded', () => {
