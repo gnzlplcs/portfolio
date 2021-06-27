@@ -23,6 +23,18 @@ const links = [{
   {
     label: "Week 06: ToDo App",
     url: "todo-app/index.html"
+  },
+  {
+    label: "Week 08: SWAPI (under construction yet)",
+    url: "week08/index.html"
+  },
+  {
+    label: "Week 09: Drums / Weekly Report",
+    url: "week09/index.html"
+  },
+  {
+    label: "Week 10: Fetch Practice / Weekly Report",
+    url: "week10/index.html"
   }
 
 ]
