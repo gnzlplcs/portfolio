@@ -25,6 +25,10 @@ const links = [{
     url: "todo-app/index.html"
   },
   {
+    label: "Week 07: Empty (Midterm check)",
+    url: "#"
+  },
+  {
     label: "Week 08: SWAPI (under construction yet)",
     url: "week08/index.html"
   },
