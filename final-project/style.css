@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+/* Colors source: https://coolors.co/083d77-ebebd3-f4d35e-ee964b-f95738 */
 
 * {
   padding: 0;
@@ -7,8 +8,12 @@
 }
 
 :root {
-  --tenne-tawny: #d65108;
-  --tenne-tawny-dark: #b54507;
+  --indigo-dye: #083d77;
+  --indigo-dye-dark: #052d57;
+  --sandy-brown: #EE964B;
+  --orange-yellow-crayola: #F4D35E;
+  --beige: #EBEBD3;
+  --orange-soda: #F95738;
 }
 
 body {
@@ -71,21 +76,21 @@ body {
   font-size: 1.1rem;
   font-family: inherit;
   outline: 0;
-  border: 1px solid var(--tenne-tawny);
-  color: var(--tenne-tawny);
+  border: 1px solid var(--indigo-dye);
+  color: var(--indigo-dye);
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
 }
 
 .search-control::placeholder {
-  color: var(--tenne-tawny);
+  color: var(--indigo-dye);
 }
 
 .search-btn {
   width: 55px;
   height: 55px;
   font-size: 1.8rem;
-  background: var(--tenne-tawny);
+  background: var(--indigo-dye);
   color: #fff;
   border: none;
   border-top-right-radius: 2rem;
@@ -98,7 +103,7 @@ body {
 }
 
 .search-btn:hover {
-  background: var(--tenne-tawny-dark);
+  background: var(--indigo-dye-dark);
 }
 
 .word-result {
@@ -110,6 +115,7 @@ body {
 }
 
 .word-item {
+  background-color: var(--beige);
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -128,15 +134,22 @@ body {
   font-size: 1.4rem;
 }
 
+.word-fl {
+  background-color: var(--orange-yellow-crayola);
+  border-radius: 5px;
+  font-weight: 700;
+  color: #fff;
+}
+
 .definition-btn {
   text-decoration: none;
   color: #fff;
-  background: var(--tenne-tawny);
+  background: var(--orange-soda);
   font-weight: 500;
   font-size: 1.1rem;
   padding: 0.75rem 0;
   display: block;
-  width: 175px;
+  width: 200px;
   margin: 1rem auto;
   border-radius: 2rem;
   -webkit-border-radius: 2rem;
@@ -151,7 +164,7 @@ body {
 }
 
 .definition-btn:hover {
-  background: var(--tenne-tawny-dark);
+  background: var(--indigo-dye-dark);
 }
 
 /* word details */
@@ -165,7 +178,7 @@ body {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   color: #fff;
-  background: var(--tenne-tawny);
+  background: var(--indigo-dye);
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -192,7 +205,7 @@ body {
 }
 
 /* JS related */
-.showdefinition {
+.showDefinition {
   display: block;
 }
 
@@ -231,7 +244,7 @@ body {
 .definition-category {
   background: #fff;
   font-weight: 600;
-  color: var(--tenne-tawny);
+  color: var(--indigo-dye);
   display: inline-block;
   padding: 0.2rem 0.5rem;
   border-radius: 0.3rem;
@@ -244,7 +257,7 @@ body {
 .definition-category {
   background: #fff;
   font-weight: 600;
-  color: var(--tenne-tawny);
+  color: var(--indigo-dye);
   display: inline-block;
   padding: 0.2rem 0.5rem;
   border-radius: 0.3rem;
@@ -287,7 +300,7 @@ body {
 
 .notFound {
   grid-template-columns: 1fr!important;
-  color: var(--tenne-tawny);
+  color: var(--indigo-dye);
   font-size: 1.8rem;
   font-weight: 600;
   width: 100%;

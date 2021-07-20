@@ -1,75 +1,100 @@
-const myToken = 'ff0ae246-89ef-493b-ae2a-abf4bc45581f';
 const API = `https://dictionaryapi.com/api/v3/references/collegiate/json/`;
+const myToken = 'ff0ae246-89ef-493b-ae2a-abf4bc45581f';
+
 const searchBtn = document.getElementById('search-btn');
 const wordList = document.getElementById('word');
+const wordDetails = document.getElementById('word-details');
 const wordDetailsContent = document.querySelector('.word-details-content');
-const recipeCloseBtn = document.getElementById('recipe-close-btn');
+const definitionCloseBtn = document.getElementById('definition-close-btn');
 
 // event listener list
 searchBtn.addEventListener('click', getWordList);
 wordList.addEventListener('click', getWordDefinition);
+definitionCloseBtn.addEventListener('click', () => {
+  wordDetailsContent.parentElement.classList.remove('showDefinition');
+})
 
 function getWordList() {
   let searchInputTxt = document.getElementById('search-input').value.trim();
   let url_api = `${API}${searchInputTxt}?key=${myToken}`;
   fetch(url_api)
     .then(res => res.json())
-    .then(word => renderWordList(word))
+    .then(word => {
+      renderWordList(word);
+      // renderWordDetails(word);
+    })
     .catch(error => {
       console.error('Error:', error);
     });
 }
 
 function renderWordList(word) {
-  if (word[0].meta.id) {
-    for (let i = 0; i < word.length; i++) {
-      // Creating item
-      let wordItem = document.createElement('div');
-      let wordName = document.createElement('div');
-      let definitionBtn = document.createElement('a');
-      wordItem.classList.add('word-item');
-      wordName.classList.add('word-name');
-      definitionBtn.setAttribute('href', '#');
-      definitionBtn.classList.add('definition-btn');
-      definitionBtn.innerHTML = 'Get Full Definition';
-      wordName.innerHTML = `
-        <h3 id="${word[i].meta.uuid}">${word[i].meta.id}</h3>
-        <p class="word-fl">${word[i].fl}</p>
+  let html = "";
+  if (word) {
+    word.forEach(w => {
+      let shortdefs = "";
+      w.shortdef.forEach(sd => {
+        shortdefs += `
+          <br><p>${sd}</p>
+        `;
+      });
+      html += `
+        <div class="word-item">
+          <div class="word-name">
+            <h3>${w.meta.id}</h3>
+            <p class="word-fl">${w.fl}</p>
+            ${shortdefs}
+            <a href="#" class="definition-btn" id="${w.meta.uuid}">Get Full Definition</a>
+          </div>
+        </div>
       `;
-      for (let j = 0; j < word[i].shortdef.length; j++) {
-        wordName.innerHTML += `
-        <br><p>${word[i].shortdef[j]}</p>
-      `;
-      }
-      wordItem.appendChild(wordName);
-      wordItem.appendChild(definitionBtn);
-      wordList.appendChild(wordItem)
-
-      // Creating modal
-      
-    }
-  } else if (!word[0].meta.id) {
-    wordList.innerHTML = `
+    });
+  } else {
+    html = `
       <p>Sorry, we didn\'t find this word</p>
     `;
-    wordList.classList.add('notFound');
   }
+  wordList.innerHTML = html;
+}
+
+function renderWordDetails(word, definitionBtnId) {
+  let html = "";
+  let stems = "";
+  word.filter(w => {
+    if (w.meta.uuid == definitionBtnId) {
+      w.meta.stems.forEach(s => {
+        stems += `
+            <li>${s}</li>
+          `;
+      });
+      html += `
+        <div class="modal" id="${w.meta.uuid}">
+        <h2 class="definition-title">${w.meta.id}</h2>
+        <p class="definition-category">${w.fl}</p>
+        <div>Stems:
+          <ul>
+            ${stems}
+          </ul>
+        </div>
+        </div>
+        `;
+    }
+  })
+  wordDetailsContent.innerHTML = html;
+  wordDetailsContent.parentElement.classList.add('showDefinition');
 }
 
 function getWordDefinition(e) {
   e.preventDefault();
   if (e.target.classList.contains('definition-btn')) {
     let searchInputTxt = document.getElementById('search-input').value.trim();
+    let definitionBtnId = e.target.id;
     let url_api = `${API}${searchInputTxt}?key=${myToken}`;
     fetch(url_api)
-    .then(response => response.json())
-    .then(word => wordFullDetailsModal(word))
-    .catch(error => {
-      console.error('Error:', error);
-    });
+      .then(response => response.json())
+      .then(word => renderWordDetails(word, definitionBtnId))
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }
-}
-
-function wordFullDetailsModal(word) {
-  word.forEach(e => console.log(e.meta.uuid))
 }
