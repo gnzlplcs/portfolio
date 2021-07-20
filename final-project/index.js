@@ -30,7 +30,7 @@ function getWordList() {
 
 function renderWordList(word) {
   let html = "";
-  if (word) {
+  if (word !== undefined) {
     word.forEach(w => {
       let shortdefs = "";
       w.shortdef.forEach(sd => {
@@ -60,8 +60,12 @@ function renderWordList(word) {
 function renderWordDetails(word, definitionBtnId) {
   let html = "";
   let stems = "";
+  let etymology = "There is no etymology for this word";
   word.filter(w => {
     if (w.meta.uuid == definitionBtnId) {
+      if (w.et) {
+        etymology = w.et[0][1];
+      }
       w.meta.stems.forEach(s => {
         stems += `
             <li>${s}</li>
@@ -71,11 +75,12 @@ function renderWordDetails(word, definitionBtnId) {
         <div class="modal" id="${w.meta.uuid}">
         <h2 class="definition-title">${w.meta.id}</h2>
         <p class="definition-category">${w.fl}</p>
-        <div>Stems:
+        <hr><div><strong>Stems:</strong>
           <ul>
             ${stems}
           </ul>
         </div>
+        <p><strong>Etymology:</strong> ${etymology}</p>
         </div>
         `;
     }
