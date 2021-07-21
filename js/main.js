@@ -39,6 +39,22 @@ const links = [{
   {
     label: "Week 10: Fetch Practice / Weekly Report",
     url: "week10/index.html"
+  },
+  {
+    label: "Week 11: Authentication with JWT / Weekly Report",
+    url: "week11/index.html"
+  },
+  {
+    label: "Week 12: Weekly Report",
+    url: "week12/index.html"
+  },
+  {
+    label: "Week 13: Weekly Report",
+    url: "week13/index.html"
+  },
+  {
+    label: "Week 14: Final Project => Find Words Definitions",
+    url: "final-project/index.html"
   }
 
 ]
