@@ -40,6 +40,16 @@ body {
   margin-bottom: 1rem;
 }
 
+.search h2,
+.word-result h2 {
+  color: var(--indigo-dye);
+}
+
+.search h2.title {
+  border-bottom: 5px solid var(--orange-yellow-crayola);
+  padding-bottom: 1rem;
+}
+
 /*  */
 .container {
   min-height: 100vh;
@@ -56,9 +66,6 @@ body {
   margin: 2rem 0;
 }
 
-.word-search cite {
-  font-size: 1rem;
-}
 
 .word-search-box {
   margin: 1.2rem 0;
@@ -246,6 +253,7 @@ body {
   letter-spacing: 1px;
   padding-bottom: 1rem;
 }
+
 .definition-category {
   background: #fff;
   font-weight: 600;
@@ -281,8 +289,18 @@ body {
   list-style: none;
 }
 
+.footer {
+  background-color: var(--orange-yellow-crayola);
+  color: var(--indigo-dye);
+  font-size: 80%;
+  margin-top: 1rem;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
 .notFound {
-  grid-template-columns: 1fr!important;
+  grid-template-columns: 1fr !important;
   color: var(--indigo-dye);
   font-size: 1.8rem;
   font-weight: 600;
@@ -308,6 +326,7 @@ body {
   .word-item {
     margin: 0;
   }
+
   .word-details {
     width: 700px;
   }
